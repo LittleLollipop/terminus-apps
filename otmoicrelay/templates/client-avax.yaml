@@ -48,7 +48,7 @@ spec:
           - name: REDIS_HOST
             value: "obridge-relay-db-redis-master"
           - name: RPC_URL
-            value: "https://rpc.ankr.com/avalanche_fuji"
+            value: "https://endpoints.omniatech.io/v1/avax/fuji/public"
           - name: CONTRACT_ADDRESS
             value: "0xE244204c900613dd084ED8543b15616bA43B560A"
           - name: SYSTEM_CHAIN_ID
@@ -56,7 +56,7 @@ spec:
           - name: CHAIN_ID
             value: "43113"
           - name: START_BLOCK
-            value: "20814333"
+            value: "30566645"
           - name: SERVER_URL_TRANSFER_OUT
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
           - name: SERVER_URL_TRANSFER_IN

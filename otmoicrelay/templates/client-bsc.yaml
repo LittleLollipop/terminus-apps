@@ -48,7 +48,7 @@ spec:
           - name: REDIS_HOST
             value: "obridge-relay-db-redis-master"
           - name: RPC_URL
-            value: "https://blockchain2.byte-trade.com:31267/bsc-testnet"
+            value: "https://endpoints.omniatech.io/v1/bsc/testnet/public"
           - name: CONTRACT_ADDRESS
             value: "0x9D18cc6cFC0614e05AF80355aB836E2cF945a91C"
           - name: SYSTEM_CHAIN_ID
@@ -56,7 +56,7 @@ spec:
           - name: CHAIN_ID
             value: "97"
           - name: START_BLOCK
-            value: "28808935"
+            value: "38306330"
           - name: SERVER_URL_TRANSFER_OUT
             value: "http://otmoicrelay-server:9102/relay/chain_client/on_transfer_out"
           - name: SERVER_URL_TRANSFER_IN

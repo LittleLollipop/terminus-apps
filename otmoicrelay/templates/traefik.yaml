@@ -1,4 +1,6 @@
-{{- $webDomain := printf "%s.%s" "otmoicrelay" .Values.user.zone -}}
+{{- $traefikDomainENV := split  ","  .Values.domain.traefik -}}
+{{- $webDomain := index $traefikDomainENV "_0" -}}
+
 # Source: traefik/templates/rbac/serviceaccount.yaml
 kind: ServiceAccount
 apiVersion: v1
