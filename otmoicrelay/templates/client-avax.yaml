@@ -47,6 +47,8 @@ spec:
             value: "9100"
           - name: REDIS_HOST
             value: "obridge-relay-db-redis-master"
+          - name: REDIS_PORT
+            value: "6379"
           - name: RPC_URL
             value: "https://endpoints.omniatech.io/v1/avax/fuji/public"
           - name: CONTRACT_ADDRESS
