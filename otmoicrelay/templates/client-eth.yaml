@@ -2,15 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: obridge-chain-client-evm-bsc-server-9006
+  name: obridge-chain-client-evm-eth-server-60
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
-    app: obridge-chain-client-evm-bsc-9006
+    app: obridge-chain-client-evm-eth-60
   type: ClusterIP
   ports:
     - protocol: TCP
-      name: obridge-chain-client-evm-bsc-api-9006
+      name: obridge-chain-client-evm-eth-api-60
       port: 9100
       targetPort: 9100
 ---
@@ -18,22 +18,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: obridge-chain-client-evm-bsc-9006
+  name: obridge-chain-client-evm-eth-60
   namespace: {{ .Release.Namespace }}
   labels:
-    app: obridge-chain-client-evm-bsc-9006
+    app: obridge-chain-client-evm-eth-60
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: obridge-chain-client-evm-bsc-9006
+      app: obridge-chain-client-evm-eth-60
   template:
     metadata:
       labels:
-        app: obridge-chain-client-evm-bsc-9006
+        app: obridge-chain-client-evm-eth-60
     spec:
       containers:
-      - name: obridge-chain-client-evm-bsc-9006
+      - name: obridge-chain-client-evm-eth-60
         image: kldtks/edge:otmoic-chainclient-evm-latest
         ports:
           - containerPort: 9100
@@ -50,13 +50,13 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://endpoints.omniatech.io/v1/bsc/testnet/public"
+            value: "https://eth-sepolia.public.blastapi.io"
           - name: CONTRACT_ADDRESS
-            value: "0xE09795702F95ff8Df93f41043f31C8A3b1789b8B"
+            value: "0xD6b2815Dc445e69aFbA7924f9744875FF2509Db2"
           - name: SYSTEM_CHAIN_ID
-            value: "9006"
+            value: "60"
           - name: CHAIN_ID
-            value: "97"
+            value: "11155111"
           - name: START_BLOCK
             value: "0"
           - name: SERVER_URL_TRANSFER_OUT

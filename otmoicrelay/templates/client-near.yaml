@@ -23,7 +23,7 @@ metadata:
   labels:
     app: obridge-chain-client-near-397
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: obridge-chain-client-near-397
