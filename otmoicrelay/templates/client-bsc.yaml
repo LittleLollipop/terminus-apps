@@ -50,7 +50,7 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://endpoints.omniatech.io/v1/bsc/testnet/public"
+            value: "https://bsc-testnet.blockpi.network/v1/rpc/public"
           - name: CONTRACT_ADDRESS
             value: "0xE09795702F95ff8Df93f41043f31C8A3b1789b8B"
           - name: SYSTEM_CHAIN_ID

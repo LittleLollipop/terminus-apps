@@ -50,7 +50,7 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://eth-sepolia.public.blastapi.io"
+            value: "https://eth-sepolia-public.unifra.io"
           - name: CONTRACT_ADDRESS
             value: "0xD6b2815Dc445e69aFbA7924f9744875FF2509Db2"
           - name: SYSTEM_CHAIN_ID
