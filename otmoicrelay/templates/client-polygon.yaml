@@ -50,7 +50,7 @@ spec:
           - name: REDIS_PORT
             value: "6379"
           - name: RPC_URL
-            value: "https://polygon-testnet.public.blastapi.io"
+            value: "https://polygon-mumbai.blockpi.network/v1/rpc/public"
           - name: CONTRACT_ADDRESS
             value: "0xd116c529E3188be0C1E6B53Ee499229e29B1E6fA"
           - name: SYSTEM_CHAIN_ID
