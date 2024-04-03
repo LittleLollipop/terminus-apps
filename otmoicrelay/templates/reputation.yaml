@@ -6,7 +6,7 @@ data:
 
     [point]
     port = 1235
-    arbiterUrl = "http://reputation-arbiter:1236"
+    arbiterUrl = "http://arbiter-service:1236"
     relayAdminUrl = "http://relay-adminpanel-service:9101"
     refreshInterval = 43200000 # 1000 * 60 * 60 * 12
 
@@ -22,7 +22,7 @@ data:
 
     [connector]
     port = 1234
-    callbackUrl = "http://reputation-connector:1234"
+    callbackUrl = "http://connector-service:1234"
 
     [chainIdConvert]
     9006 = "97"
