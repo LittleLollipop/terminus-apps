@@ -169,7 +169,50 @@ spec:
               value: 'https://vc-gate-v3.bttcdn.com/twitter_result'
             - name: CALL_BACK
               value: 'https://vc-gate-v3.bttcdn.com/twitter_callback'
-
+        - name: vc-admin
+          image: 'aboveos/verifiable-credential-gate:otmoic-latest'
+          command:
+            - node
+            - packages/admin/dist/main.js
+          env:
+            - name: CLIENT_ID
+              value: Y05OU3hYOHB6RUN3SGVPa2JzeXo6MTpjaQ
+            - name: CLIENT_SECRET
+              value: cs
+            - name: TWITTER_CLIENT_ID
+              value: Y05OU3hYOHB6RUN3SGVPa2JzeXo6MTpjaQ
+            - name: TWITTER_CLIENT_SECRET
+              value: tcs
+            - name: TWITTER_CALL_BACK
+              value: /twitter_callback
+            - name: TWITTER_CALL_BACK_RESULT
+              value: /twitter_result
+            - name: GOOGLE_CLIENT_ID
+              value: >-
+                279288147664-n7av0jerhiqt58rnjv8flitngbog8nbo.apps.googleusercontent.com
+            - name: GOOGLE_CLIENT_SECRET
+              value: gcs
+            - name: GOOGLE_OAUTH_HOST
+              value: 'https://vc-gate-api.bttcdn.com'
+            - name: GOOGLE_REDIRECT_URL
+              value: /google_callback
+            - name: GOOGLE_CALL_BACK_RESULT
+              value: /google_result
+            - name: SSI_SERVICE_URL
+              value: 'http://127.0.0.1:3000'
+            - name: CLOUD_SERVICE_URL
+            - name: SERVER_DID_GATE
+              value: 'http://127.0.0.1:4010'
+            - name: TWITTER_OAUTH_HOST
+              value: 'https://vc-gate-v3.bttcdn.com'
+            - name: CALL_BACK_RESULT
+              value: 'https://vc-gate-v3.bttcdn.com/twitter_result'
+            - name: CALL_BACK
+              value: 'https://vc-gate-v3.bttcdn.com/twitter_callback'
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
         - name: did-gate
           image: 'aboveos/did-gate:v3-latest'
           command:
