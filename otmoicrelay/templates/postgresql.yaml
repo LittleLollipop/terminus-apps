@@ -287,9 +287,11 @@ spec:
             - name: PGPOOL_CHILD_LIFE_TIME
               value: "300"
             - name: PGPOOL_CLIENT_IDLE_LIMIT
-              value: "300"
+              value: "3000"
             - name: PGPOOL_ENABLE_TLS
               value: "no"
+            - name: connection_life_time
+              value: "300"
           envFrom:
           ports:
             - name: postgresql
