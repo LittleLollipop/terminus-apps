@@ -281,17 +281,17 @@ spec:
             - name: PGPOOL_RESERVED_CONNECTIONS
               value: '1'
             - name: PGPOOL_MAX_POOL
-              value: "10"
+              value: "15"
             - name: PGPOOL_CHILD_MAX_CONNECTIONS
-              value: "100"
+              value: "0"
             - name: PGPOOL_CHILD_LIFE_TIME
-              value: "300"
+              value: "660"
             - name: PGPOOL_CLIENT_IDLE_LIMIT
-              value: "3000"
+              value: "600"
             - name: PGPOOL_ENABLE_TLS
               value: "no"
-            - name: connection_life_time
-              value: "300"
+            - name: PGPOOL_CONNECTION_LIFE_TIME
+              value: "0"
           envFrom:
           ports:
             - name: postgresql
