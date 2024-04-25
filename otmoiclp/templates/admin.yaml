@@ -204,6 +204,10 @@ spec:
     spec:
       serviceAccountName: lpnode-sa
       volumes:
+        - name: user-script
+          hostPath:
+            path: {{ .Values.userspace.userData }}/UserScript
+            type: DirectoryOrCreate
         - name: base-data-config
           configMap:
             name: otmoic-admin-base-data
@@ -220,11 +224,13 @@ spec:
             cpu: 1m
             memory: 8Mi
           limits:
-            cpu: 100m
-            memory: 64Mi
+            cpu: 200m
+            memory: 512Mi
         ports:
           - containerPort: 18006
         volumeMounts:
+          - name: user-script
+            mountPath: /user-script/run-script
           - name: base-data-config
             readOnly: true
             mountPath: /init_data
