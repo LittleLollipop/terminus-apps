@@ -221,8 +221,8 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            cpu: 1m
-            memory: 8Mi
+            cpu: 5m
+            memory: 64Mi
           limits:
             cpu: 200m
             memory: 512Mi
@@ -276,3 +276,5 @@ spec:
             value: {{ .Values.user.zone }}
           - name: USERSPACE_DATA_PATH
             value: {{ .Values.userspace.userData }}
+          - name: NAMESPACE
+            value: {{ .Release.Namespace }}
