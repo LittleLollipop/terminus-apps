@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: lpnode-dashboard
-        image: otmoic/otmoic-lpnode-dashboard:latest
+        image: otmoic/lpnode-dashboard:latest
         imagePullPolicy: Always
         resources:
           requests:

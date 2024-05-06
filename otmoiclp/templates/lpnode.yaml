@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: otmoiclp
-        image: otmoic/otmoic-lpnode:latest
+        image: otmoic/lpnode:latest
         imagePullPolicy: Always
         resources:
           requests:

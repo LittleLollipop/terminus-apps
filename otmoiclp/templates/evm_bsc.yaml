@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: chain-client-evm-bsc-9006
-          image: otmoic/otmoic-chainclient-evm:latest
+          image: otmoic/chainclient-evm:latest
           imagePullPolicy: Always
           resources:
             requests:
@@ -70,7 +70,7 @@ spec:
             - name: OS_SYSTEM_SERVER
               value: system-server.user-system-{{ .Values.bfl.username }}
             - name: CONTRACT_ADDRESS
-              value: "0xE09795702F95ff8Df93f41043f31C8A3b1789b8B"
+              value: "0xcb24e8aEDB15981F4C088214722D8E3809e817eB"
             - name: START_BLOCK
               value: "0"
             - name: RPC_URL

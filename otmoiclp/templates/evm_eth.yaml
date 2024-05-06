@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: chain-client-evm-eth-60
-          image: otmoic/otmoic-chainclient-evm:latest
+          image: otmoic/chainclient-evm:latest
           imagePullPolicy: Always
           resources:
             requests:
