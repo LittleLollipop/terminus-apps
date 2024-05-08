@@ -69,6 +69,21 @@ data:
                   STATUS_KEY: "chain-client-status-report-polygon",
                 },
               ],
+            },
+            {
+              chainId: 614,
+              chainName: "op",
+              name: "OP Mainnet",
+              tokenName: "ETH",
+              tokenUsd: 300,
+              chainType: "evm",
+              image: "otmoic/chainclient-evm:latest",
+              serviceName: "chain-client-evm-op-server-614",
+              envList: [
+                {
+                  STATUS_KEY: "chain-client-status-report-op",
+                },
+              ],
             }
           ],
           filter: [
@@ -234,9 +249,9 @@ spec:
             mountPath: /init_data
         env:
           - name: DEPLOY_ENV
-            value: 'dev' # prod/dev
+            value: 'prod' # prod/dev
           - name: RELAY_ACCESS_URL
-            value: 'https://5b4522f4.saidevgp01.relay-1-testnet.otmoic.cloud'
+            value: 'https://relay-1.mainnet.otmoic.cloud'
           - name: REDIS_PASS
             value: {{ .Values.redis.password }}
           - name: POD_NAMESPACE
