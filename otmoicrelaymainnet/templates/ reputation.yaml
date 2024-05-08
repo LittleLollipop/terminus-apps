@@ -71,7 +71,7 @@ spec:
     spec:
       containers:
         - name: connector
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"
@@ -143,7 +143,7 @@ spec:
     spec:
       containers:
         - name: arbiter
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"
@@ -214,7 +214,7 @@ spec:
     spec:
       containers:
         - name: points
-          image: otmoic/reputation-service:latest
+          image: otmoic/reputation-suite:d0f6fe73
           env:
           - name: DBUSER
             value: "postgres"

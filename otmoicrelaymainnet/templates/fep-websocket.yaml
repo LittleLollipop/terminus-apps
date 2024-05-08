@@ -105,7 +105,7 @@ spec:
     spec:
       containers:
         - name: relay-utils
-          image: 'kldtks/edge:otmoic-relay-utils-4c0ec1e3'
+          image: 'kldtks/edge:obridge-relay-utils-4c0ec1e3'
           resources:
             requests:
               cpu: 1m
