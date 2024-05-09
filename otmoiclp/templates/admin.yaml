@@ -19,6 +19,7 @@ data:
               chainType: "evm",
               image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-bsc-server-9006",
+              deployName: "chain-client-evm-bsc-9006",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-bsc",
@@ -34,6 +35,7 @@ data:
               chainType: "evm",
               image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-avax-server-9000",
+              deployName: "chain-client-evm-avax-9000",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-avax",
@@ -49,6 +51,7 @@ data:
               chainType: "evm",
               image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-eth-server-60",
+              deployName: "chain-client-evm-eth-60",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-eth",
@@ -64,6 +67,7 @@ data:
               chainType: "evm",
               image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-polygon-server-966",
+              deployName: "chain-client-evm-polygon-966",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-polygon",
@@ -79,6 +83,7 @@ data:
               chainType: "evm",
               image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-op-server-614",
+              deployName: "chain-client-evm-op-614",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-op",
@@ -119,6 +124,10 @@ data:
             },
             {
               name: "serviceName",
+              type: "string",
+            },
+            {
+              name: "deployName",
               type: "string",
             },
             {
@@ -247,6 +256,8 @@ spec:
           - name: base-data-config
             readOnly: true
             mountPath: /init_data
+          - name: user-script
+            mountPath: /user-script/run-script
         env:
           - name: DEPLOY_ENV
             value: 'prod' # prod/dev

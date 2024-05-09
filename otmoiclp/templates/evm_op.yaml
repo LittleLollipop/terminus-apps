@@ -48,7 +48,7 @@ spec:
             - name: CLEAR_PADDING
               value: 'true'
             - name: "STATUS_KEY"
-              value: "chain-client-status-report-eth"
+              value: "chain-client-status-report-op"
             - name: CHAIN_TYPE
               value: "evm"
             - name: REDIS_PASSWORD
@@ -70,7 +70,7 @@ spec:
             - name: OS_SYSTEM_SERVER
               value: system-server.user-system-{{ .Values.bfl.username }}
             - name: CONTRACT_ADDRESS
-              value: "0xD6b2815Dc445e69aFbA7924f9744875FF2509Db2"
+              value: "0x7610e5C39f0Bc4EEF57DEdAAb19a714672B21c9b"
             - name: START_BLOCK
               value: "119733376"
             - name: RPC_URL
