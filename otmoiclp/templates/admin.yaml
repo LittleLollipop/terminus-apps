@@ -17,8 +17,9 @@ data:
               tokenName: "BNB",
               tokenUsd: 300,
               chainType: "evm",
-              image: "otmoic/otmoic-chainclient-evm:latest",
+              image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-bsc-server-9006",
+              deployName: "chain-client-evm-bsc-9006",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-bsc",
@@ -32,8 +33,9 @@ data:
               tokenName: "AVAX",
               tokenUsd: 300,
               chainType: "evm",
-              image: "otmoic/otmoic-chainclient-evm:latest",
+              image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-avax-server-9000",
+              deployName: "chain-client-evm-avax-9000",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-avax",
@@ -47,8 +49,9 @@ data:
               tokenName: "ETH",
               tokenUsd: 300,
               chainType: "evm",
-              image: "otmoic/otmoic-chainclient-evm:latest",
+              image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-eth-server-60",
+              deployName: "chain-client-evm-eth-60",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-eth",
@@ -62,8 +65,9 @@ data:
               tokenName: "MATIC",
               tokenUsd: 300,
               chainType: "evm",
-              image: "otmoic/otmoic-chainclient-evm:latest",
+              image: "otmoic/chainclient-evm:latest",
               serviceName: "chain-client-evm-polygon-server-966",
+              deployName: "chain-client-evm-polygon-966",
               envList: [
                 {
                   STATUS_KEY: "chain-client-status-report-polygon",
@@ -104,6 +108,10 @@ data:
             },
             {
               name: "serviceName",
+              type: "string",
+            },
+            {
+              name: "deployName",
               type: "string",
             },
             {
@@ -204,6 +212,10 @@ spec:
     spec:
       serviceAccountName: lpnode-sa
       volumes:
+        - name: user-script
+          hostPath:
+            path: {{ .Values.userspace.userData }}/UserScript
+            type: DirectoryOrCreate
         - name: base-data-config
           configMap:
             name: otmoic-admin-base-data
@@ -213,21 +225,23 @@ spec:
             defaultMode: 420
       containers:
       - name: lpnode-admin
-        image: otmoic/otmoic-lpnode-admin:latest
+        image: otmoic/lpnode-admin:latest
         imagePullPolicy: Always
         resources:
           requests:
             cpu: 1m
             memory: 8Mi
           limits:
-            cpu: 100m
-            memory: 64Mi
+            cpu: 300m
+            memory: 512Mi
         ports:
           - containerPort: 18006
         volumeMounts:
           - name: base-data-config
             readOnly: true
             mountPath: /init_data
+          - name: user-script
+            mountPath: /user-script/run-script
         env:
           - name: DEPLOY_ENV
             value: 'dev' # prod/dev
@@ -263,10 +277,12 @@ spec:
           - name: OS_SYSTEM_SERVER
             value: system-server.user-system-{{ .Values.bfl.username }}
           - name: AMM_APP_DISPLAY_IMAGE
-            value: otmoic/otmoic-lpnode-amm:latest
+            value: otmoic/lpnode-amm:latest
           - name: MARKET_APP_DISPLAY_IMAGE
-            value: otmoic/otmoic-lpnode-exchange-adapter:latest
+            value: otmoic/lpnode-exchange-adapter:latest
           - name: LP_NAME
             value: {{ .Values.user.zone }}
           - name: USERSPACE_DATA_PATH
             value: {{ .Values.userspace.userData }}
+          - name: NAMESPACE
+            value: {{ .Release.Namespace }}

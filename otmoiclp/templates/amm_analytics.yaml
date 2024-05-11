@@ -17,15 +17,15 @@ spec:
     spec:
       containers:
         - name: amm-amm-01-analyze
-          image: otmoic/otmoic-lpnode-amm-analyze:latest
+          image: otmoic/lpnode-amm-analyze:latest
           imagePullPolicy: "Always"
           resources:
             requests:
               cpu: 10m
               memory: 64Mi
             limits:
-              cpu: 100m
-              memory: 128Mi
+              cpu: 300m
+              memory: 512Mi
           env:
             - name: APP_NAME
               value: amm-01-analyze
