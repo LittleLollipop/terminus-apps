@@ -1,10 +1,11 @@
+# ConfigMap definition for otmoic-admin-base-data
 kind: ConfigMap
 apiVersion: v1
 metadata:
   name: otmoic-admin-base-data
   namespace: {{ .Release.Namespace }}
 data:
-  init_data.js: |-
+  init_data.js: |
     var init_data = {
       data: [
         {
@@ -83,40 +84,40 @@ data:
               ],
             },
             {
-                chainId: 614,
-                chainName: "op",
-                name: "OP Mainnet",
-                tokenName: "ETH",
-                tokenUsd: 300,
-                precision: 18,
-                chainType: "evm",
-                rpcTx: "",
-                image: "otmoic/chainclient-evm:latest",
-                serviceName: "chain-client-evm-op-server-614",
-                deployName: "chain-client-evm-op-614",
-                envList: [
-                  {
-                    STATUS_KEY: "chain-client-status-report-op",
-                  },
-                ],
-              },
-              {
-                chainId: 501,
-                chainName: "solana",
-                name: "Solana",
-                tokenName: "SOL",
-                tokenUsd: 300,
-                precision: 9,
-                chainType: "solana",
-                rpcTx: "https://solscan.io/tx/{tx}",
-                image: "otmoic/chainclient-evm:latest",
-                serviceName: "chain-client-solana-solana-server-501",
-                deployName: "chain-client-solana-solana-501",
-                envList: [
-                  {
-                    STATUS_KEY: "chain-client-status-report-solana",
-                  },
-                ],
+              chainId: 614,
+              chainName: "op",
+              name: "OP Mainnet",
+              tokenName: "ETH",
+              tokenUsd: 300,
+              precision: 18,
+              chainType: "evm",
+              rpcTx: "",
+              image: "otmoic/chainclient-evm:latest",
+              serviceName: "chain-client-evm-op-server-614",
+              deployName: "chain-client-evm-op-614",
+              envList: [
+                {
+                  STATUS_KEY: "chain-client-status-report-op",
+                },
+              ],
+            },
+            {
+              chainId: 501,
+              chainName: "solana",
+              name: "Solana",
+              tokenName: "SOL",
+              tokenUsd: 300,
+              precision: 9,
+              chainType: "solana",
+              rpcTx: "https://solscan.io/tx/{tx}",
+              image: "otmoic/chainclient-evm:latest",
+              serviceName: "chain-client-solana-solana-server-501",
+              deployName: "chain-client-solana-solana-501",
+              envList: [
+                {
+                  STATUS_KEY: "chain-client-status-report-solana",
+                },
+              ],
             },
           ],
           filter: [
@@ -152,7 +153,7 @@ data:
             },
             {
               name: "rpcTx",
-              type: "string"
+              type: "string",
             },
             {
               name: "image",
@@ -207,12 +208,16 @@ data:
       ],
     };
     var json_init_data = JSON.stringify(init_data);
+
+# ServiceAccount for lpnode-sa
 ---
 kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: lpnode-sa
   namespace: {{ .Release.Namespace }}
+
+# RoleBinding for lpnode-sa-rolebinding
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -227,8 +232,9 @@ roleRef:
   kind: Role
   name: admin
   apiGroup: rbac.authorization.k8s.io
+
+# Service for lpnode-admin-server
 ---
-# Source: lpnode-admin/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -243,8 +249,9 @@ spec:
       name: lpnode-admin-api
       port: 18006
       targetPort: 18006
+
+# Deployment for lpnode-admin
 ---
-# Source: lpnode-admin/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -296,7 +303,7 @@ spec:
             mountPath: /user-script/run-script
         env:
           - name: DEPLOY_ENV
-            value: 'dev' # prod/dev
+            value: 'dev'
           - name: RELAY_ACCESS_URL
             value: 'https://5b4522f4.saidevgp01.relay-1-testnet.otmoic.cloud'
           - name: REDIS_PASS
