@@ -27,6 +27,7 @@ data:
     [chainIdConvert]
     9006 = "56"
     614 = "10"
+    501 = "501"
 
 
     [[chainClients]]
